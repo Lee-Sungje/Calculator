@@ -6,13 +6,154 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7">
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/textview_main_display"
+                style="@style/textview_customstyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="4" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_main_allclear"
+                style="@style/button_customstyle.blue_700"
+                android:text="@string/main_allclear" />
+
+            <Button
+                android:id="@+id/button_main_clear"
+                style="@style/button_customstyle.blue_700"
+                android:text="@string/main_clear" />
+
+            <Button
+                android:id="@+id/button_main_modular"
+                style="@style/button_customstyle.blue_700"
+                android:text="@string/main_modular"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/button_main_division"
+                style="@style/button_customstyle.orange_500"
+                android:text="@string/main_division" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_main_seven"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_seven" />
+
+            <Button
+                android:id="@+id/button_main_eight"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_eight" />
+
+            <Button
+                android:id="@+id/button_main_nine"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_nine" />
+
+            <Button
+                android:id="@+id/button_main_multiplication"
+                style="@style/button_customstyle.orange_500"
+                android:text="@string/main_multiplication" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_main_four"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_four" />
+
+            <Button
+                android:id="@+id/button_main_five"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_five" />
+
+            <Button
+                android:id="@+id/button_main_six"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_six" />
+
+            <Button
+                android:id="@+id/button_main_subtraction"
+                style="@style/button_customstyle.orange_500"
+                android:text="@string/main_subtraction" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_main_one"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_one" />
+
+            <Button
+                android:id="@+id/button_main_tow"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_tow" />
+
+            <Button
+                android:id="@+id/button_main_three"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_three" />
+
+            <Button
+                android:id="@+id/button_main_addition"
+                style="@style/button_customstyle.orange_500"
+                android:text="@string/main_addition" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_main_plusminussign"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_plusminussign" />
+
+            <Button
+                android:id="@+id/button_main_zero"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_zero" />
+
+            <Button
+                android:id="@+id/button_main_dot"
+                style="@style/button_customstyle.blue_600"
+                android:text="@string/main_dot" />
+
+            <Button
+                android:id="@+id/button_main_equal"
+                style="@style/button_customstyle.orange_500"
+                android:text="@string/main_equal" />
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
