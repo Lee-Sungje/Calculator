@@ -9,7 +9,7 @@ assignees: ''
 
 ## Description
 
-> description
+description
 
 ## Progress
 
