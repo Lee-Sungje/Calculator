@@ -3,16 +3,35 @@ package com.example.calculator
 import java.math.BigDecimal
 
 class Calculator {
-    var result: BigDecimal = BigDecimal(0)
-    var operand: BigDecimal = BigDecimal(0)
+    var result: BigDecimal = BigDecimal.ZERO
+    var operand: BigDecimal = BigDecimal.ZERO
+    var operator: String = "="
+    var lastOperator: String = "+"
+    var isFirstInput: Boolean = true
+    var isOperatorClick: Boolean = false
 
-    fun addition() {}
-    fun subtraction() {}
-    fun multiplication() {}
-    fun division() {}
-    fun modular() {}
-    fun clear() {
-        this.operand = BigDecimal(0)
+    fun calculate(operator: String) {
+        when (operator) {
+            "=" -> result = operand
+            "+" -> result += operand
+            "-" -> result -= operand
+            "*" -> result *= operand
+            "/" -> result /= operand
+            "%" -> result %= operand
+        }
     }
-    fun allClear() {}
+
+    fun clear() {
+        operand = BigDecimal.ZERO
+        isFirstInput = true
+    }
+
+    fun allClear() {
+        result = BigDecimal.ZERO
+        operand = BigDecimal.ZERO
+        operator = "="
+        lastOperator = "+"
+        isFirstInput = true
+        isOperatorClick = false
+    }
 }

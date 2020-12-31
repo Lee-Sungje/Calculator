@@ -27,7 +27,8 @@
                 style="@style/textview_customstyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_span="4" />
+                android:layout_span="4"
+                android:text="@string/main_zero" />
         </TableRow>
 
         <TableRow
@@ -47,12 +48,14 @@
             <Button
                 android:id="@+id/button_main_modular"
                 style="@style/button_customstyle.blue_700"
+                android:tag="%"
                 android:text="@string/main_modular"
                 android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button_main_division"
                 style="@style/button_customstyle.orange_500"
+                android:tag="/"
                 android:text="@string/main_division" />
         </TableRow>
 
@@ -63,21 +66,25 @@
             <Button
                 android:id="@+id/button_main_seven"
                 style="@style/button_customstyle.blue_600"
+                android:tag="7"
                 android:text="@string/main_seven" />
 
             <Button
                 android:id="@+id/button_main_eight"
                 style="@style/button_customstyle.blue_600"
+                android:tag="8"
                 android:text="@string/main_eight" />
 
             <Button
                 android:id="@+id/button_main_nine"
                 style="@style/button_customstyle.blue_600"
+                android:tag="9"
                 android:text="@string/main_nine" />
 
             <Button
                 android:id="@+id/button_main_multiplication"
                 style="@style/button_customstyle.orange_500"
+                android:tag="*"
                 android:text="@string/main_multiplication" />
         </TableRow>
 
@@ -88,21 +95,25 @@
             <Button
                 android:id="@+id/button_main_four"
                 style="@style/button_customstyle.blue_600"
+                android:tag="4"
                 android:text="@string/main_four" />
 
             <Button
                 android:id="@+id/button_main_five"
                 style="@style/button_customstyle.blue_600"
+                android:tag="5"
                 android:text="@string/main_five" />
 
             <Button
                 android:id="@+id/button_main_six"
                 style="@style/button_customstyle.blue_600"
+                android:tag="6"
                 android:text="@string/main_six" />
 
             <Button
                 android:id="@+id/button_main_subtraction"
                 style="@style/button_customstyle.orange_500"
+                android:tag="-"
                 android:text="@string/main_subtraction" />
         </TableRow>
 
@@ -113,21 +124,25 @@
             <Button
                 android:id="@+id/button_main_one"
                 style="@style/button_customstyle.blue_600"
+                android:tag="1"
                 android:text="@string/main_one" />
 
             <Button
                 android:id="@+id/button_main_tow"
                 style="@style/button_customstyle.blue_600"
+                android:tag="2"
                 android:text="@string/main_tow" />
 
             <Button
                 android:id="@+id/button_main_three"
                 style="@style/button_customstyle.blue_600"
+                android:tag="3"
                 android:text="@string/main_three" />
 
             <Button
                 android:id="@+id/button_main_addition"
                 style="@style/button_customstyle.orange_500"
+                android:tag="+"
                 android:text="@string/main_addition" />
         </TableRow>
 
@@ -143,16 +158,19 @@
             <Button
                 android:id="@+id/button_main_zero"
                 style="@style/button_customstyle.blue_600"
+                android:tag="0"
                 android:text="@string/main_zero" />
 
             <Button
                 android:id="@+id/button_main_dot"
                 style="@style/button_customstyle.blue_600"
+                android:tag="."
                 android:text="@string/main_dot" />
 
             <Button
                 android:id="@+id/button_main_equal"
                 style="@style/button_customstyle.orange_500"
+                android:tag="="
                 android:text="@string/main_equal" />
         </TableRow>
     </TableLayout>
