@@ -2,6 +2,7 @@ package com.example.calculator
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
 import java.math.BigDecimal
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.buttonMainEight.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainNine.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainDot.setOnClickListener(numberOnClickListener)
+        activityMainBinding.buttonMainPlusminussign.setOnClickListener(plusMinusSignOnClickListener)
         activityMainBinding.buttonMainClear.setOnClickListener(clearOnClickListener)
         activityMainBinding.buttonMainAllclear.setOnClickListener(allClearOnClickListener)
         activityMainBinding.buttonMainAddition.setOnClickListener(operatorOnClickListener)
@@ -39,10 +41,15 @@ class MainActivity : AppCompatActivity() {
     private val numberOnClickListener = View.OnClickListener {
         if(calculator.isFirstInput) {
             activityMainBinding.textviewMainDisplay.text = if(it.tag == ".") "0." else it.tag.toString()
-            calculator.isFirstInput = false
+            calculator.isFirstInput = it.tag == "0"
         } else {
             activityMainBinding.textviewMainDisplay.append(it.tag.toString())
         }
+    }
+
+    private val plusMinusSignOnClickListener = View.OnClickListener {
+        val number = BigDecimal(activityMainBinding.textviewMainDisplay.text.toString()).negate()
+        activityMainBinding.textviewMainDisplay.text = number.toString()
     }
 
     private val clearOnClickListener = View.OnClickListener {
@@ -85,7 +92,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculate(operator: String) {
-        calculator.calculate(operator)
-        activityMainBinding.textviewMainDisplay.text = calculator.result.toString()
+        try {
+            calculator.calculate(operator)
+            activityMainBinding.textviewMainDisplay.text = calculator.result.toString()
+        } catch (e: ArithmeticException) {
+            calculator.allClear()
+            activityMainBinding.textviewMainDisplay.text = "0"
+            Toast.makeText(this, "0으로 나눌 수 없습니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 }
