@@ -6,10 +6,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
 import java.math.BigDecimal
+import java.math.MathContext
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
     private val calculator = Calculator()
+    private val mathContext = MathContext.DECIMAL64
+    private val minimumRange = BigDecimal(1.0E-8, mathContext)
+    private val maximumRange = BigDecimal(1.0E+9 - 1, mathContext)
+    private val decimalFormat = DecimalFormat("#,##0.########")
+    private val exponentialFormat = DecimalFormat("0.######E0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.buttonMainSeven.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainEight.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainNine.setOnClickListener(numberOnClickListener)
-        activityMainBinding.buttonMainDot.setOnClickListener(numberOnClickListener)
+        activityMainBinding.buttonMainDot.setOnClickListener(dotOnClickListener)
         activityMainBinding.buttonMainPlusminussign.setOnClickListener(plusMinusSignOnClickListener)
         activityMainBinding.buttonMainClear.setOnClickListener(clearOnClickListener)
         activityMainBinding.buttonMainAllclear.setOnClickListener(allClearOnClickListener)
@@ -40,30 +47,62 @@ class MainActivity : AppCompatActivity() {
 
     private val numberOnClickListener = View.OnClickListener {
         if(calculator.isFirstInput) {
-            activityMainBinding.textviewMainDisplay.text = if(it.tag == ".") "0." else it.tag.toString()
+            activityMainBinding.textviewMainDisplay.text = it.tag.toString()
             calculator.isFirstInput = it.tag == "0"
         } else {
-            activityMainBinding.textviewMainDisplay.append(it.tag.toString())
+            val string = activityMainBinding.textviewMainDisplay.text.toString() + it.tag.toString()
+            val number = parse(string)
+
+            activityMainBinding.textviewMainDisplay.text = if (isDecimal(activityMainBinding.textviewMainDisplay.text.toString()) && string.length <= 10) {
+                string
+            } else if (isInRange(number)) {
+                format(number, decimalFormat)
+            } else {
+                activityMainBinding.textviewMainDisplay.text
+            }
+        }
+
+    }
+
+    private val dotOnClickListener = View.OnClickListener {
+        if(!isDecimal(activityMainBinding.textviewMainDisplay.text.toString())) {
+            calculator.isFirstInput = false
+            val string = activityMainBinding.textviewMainDisplay.text.toString() + it.tag.toString()
+            activityMainBinding.textviewMainDisplay.text = string
         }
     }
 
     private val plusMinusSignOnClickListener = View.OnClickListener {
-        val number = BigDecimal(activityMainBinding.textviewMainDisplay.text.toString()).negate()
-        activityMainBinding.textviewMainDisplay.text = number.toString()
+        val number = parse(activityMainBinding.textviewMainDisplay.text.toString()).negate()
+        if (!isZero(number)) {
+            activityMainBinding.textviewMainDisplay.text = if (isInRange(number)) {
+                format(number, decimalFormat)
+            } else {
+                format(number, exponentialFormat)
+            }
+        }
     }
 
     private val clearOnClickListener = View.OnClickListener {
         calculator.clear()
-        activityMainBinding.textviewMainDisplay.text = "0"
+        activityMainBinding.textviewMainDisplay.text = format(calculator.operand, decimalFormat)
     }
 
     private val allClearOnClickListener = View.OnClickListener {
         calculator.allClear()
-        activityMainBinding.textviewMainDisplay.text = "0"
+        activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
     }
 
     private val operatorOnClickListener = View.OnClickListener {
-        calculator.operand = BigDecimal(activityMainBinding.textviewMainDisplay.text.toString())
+        try {
+            calculator.operand = parse(activityMainBinding.textviewMainDisplay.text.toString())
+        } catch (e: NumberFormatException) {
+            calculator.allClear()
+            makeToast("오버플로우")
+        } catch (e: Exception) {
+            calculator.allClear()
+            makeToast("오류")
+        }
 
         if (!calculator.isFirstInput) calculate(calculator.operator)
 
@@ -74,17 +113,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val equalOnClickListener = View.OnClickListener {
-        if (calculator.isFirstInput && calculator.isOperatorClick) {
-            if (calculator.operator != "=") calculator.operand = calculator.result
-            calculate(calculator.lastOperator)
-        } else {
-            if (calculator.operator == "=") {
-                calculator.result = BigDecimal(activityMainBinding.textviewMainDisplay.text.toString())
+        try {
+            val number = parse(activityMainBinding.textviewMainDisplay.text.toString())
+
+            if (calculator.isFirstInput && calculator.isOperatorClick && !isZero(number)) {
+                if (calculator.operator != "=") calculator.operand = calculator.result
                 calculate(calculator.lastOperator)
             } else {
-                calculator.operand = BigDecimal(activityMainBinding.textviewMainDisplay.text.toString())
-                calculate(calculator.operator)
+                if (calculator.operator == "=") {
+                    calculator.result = number
+                    calculate(calculator.lastOperator)
+                } else {
+                    calculator.operand = number
+                    calculate(calculator.operator)
+                }
             }
+        } catch (e: NumberFormatException) {
+            calculator.allClear()
+            activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
+            makeToast("오버플로우")
+        } catch (e: Exception) {
+            calculator.allClear()
+            activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
+            makeToast("오류")
         }
 
         calculator.operator = it.tag.toString()
@@ -94,11 +145,28 @@ class MainActivity : AppCompatActivity() {
     private fun calculate(operator: String) {
         try {
             calculator.calculate(operator)
-            activityMainBinding.textviewMainDisplay.text = calculator.result.toString()
         } catch (e: ArithmeticException) {
             calculator.allClear()
-            activityMainBinding.textviewMainDisplay.text = "0"
-            Toast.makeText(this, "0으로 나눌 수 없습니다.", Toast.LENGTH_SHORT).show()
+            makeToast("0으로 나눌 수 없습니다.")
+        } catch (e: NumberFormatException) {
+            calculator.allClear()
+            makeToast("오버플로우")
+        } catch (e: Exception) {
+            calculator.allClear()
+            makeToast("오류")
+        } finally {
+            activityMainBinding.textviewMainDisplay.text = if (isInRange(calculator.result) || isZero(calculator.result)) {
+                format(calculator.result, decimalFormat)
+            } else {
+                format(calculator.result, exponentialFormat)
+            }
         }
     }
+
+    private fun makeToast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun isInRange(number: BigDecimal) = number.abs(mathContext) in minimumRange..maximumRange
+    private fun isZero(number: BigDecimal) = number == BigDecimal.ZERO || number.toDouble() == 0.0
+    private fun isDecimal(string: String) = string.contains(".")
+    private fun format(number: BigDecimal, format: DecimalFormat) = format.format(number)
+    private fun parse(string: String) = BigDecimal(decimalFormat.parse(string)?.toString(), mathContext)
 }
