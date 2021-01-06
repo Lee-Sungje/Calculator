@@ -4,7 +4,7 @@ import java.math.BigDecimal
 import java.math.MathContext
 
 class Calculator {
-    private val mathContext = MathContext.DECIMAL32
+    private val mathContext = MathContext.DECIMAL64
     var result: BigDecimal = BigDecimal(0, mathContext)
     var operand: BigDecimal = BigDecimal(0, mathContext)
     var operator: String = "="

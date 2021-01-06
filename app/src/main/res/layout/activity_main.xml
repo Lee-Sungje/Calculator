@@ -1,177 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/textview_main_display"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/all_textview"
+            android:backgroundTint="@color/blue_800"
+            android:gravity="bottom|end"
+            android:text="@string/main_zero"
+            android:textColor="@color/white"
+            android:padding="16dp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_marginBottom="32dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:id="@+id/textview_main_display"
-                style="@style/textview_customstyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_span="4"
-                android:text="@string/main_zero" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_main_allclear"
                 style="@style/button_customstyle.blue_700"
-                android:text="@string/main_allclear" />
+                android:text="@string/main_allclear"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_clear"
                 style="@style/button_customstyle.blue_700"
-                android:text="@string/main_clear" />
+                android:text="@string/main_clear"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_modular"
                 style="@style/button_customstyle.blue_700"
                 android:tag="%"
                 android:text="@string/main_modular"
-                android:textSize="20sp" />
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_division"
                 style="@style/button_customstyle.orange_500"
                 android:tag="/"
-                android:text="@string/main_division" />
+                android:text="@string/main_division"
+                app:autoSizeTextType="uniform" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_main_seven"
                 style="@style/button_customstyle.blue_600"
                 android:tag="7"
-                android:text="@string/main_seven" />
+                android:text="@string/main_seven"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_eight"
                 style="@style/button_customstyle.blue_600"
                 android:tag="8"
-                android:text="@string/main_eight" />
+                android:text="@string/main_eight"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_nine"
                 style="@style/button_customstyle.blue_600"
                 android:tag="9"
-                android:text="@string/main_nine" />
+                android:text="@string/main_nine"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_multiplication"
                 style="@style/button_customstyle.orange_500"
                 android:tag="*"
-                android:text="@string/main_multiplication" />
+                android:text="@string/main_multiplication"
+                app:autoSizeTextType="uniform" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_main_four"
                 style="@style/button_customstyle.blue_600"
                 android:tag="4"
-                android:text="@string/main_four" />
+                android:text="@string/main_four"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_five"
                 style="@style/button_customstyle.blue_600"
                 android:tag="5"
-                android:text="@string/main_five" />
+                android:text="@string/main_five"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_six"
                 style="@style/button_customstyle.blue_600"
                 android:tag="6"
-                android:text="@string/main_six" />
+                android:text="@string/main_six"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_subtraction"
                 style="@style/button_customstyle.orange_500"
                 android:tag="-"
-                android:text="@string/main_subtraction" />
+                android:text="@string/main_subtraction"
+                app:autoSizeTextType="uniform" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_main_one"
                 style="@style/button_customstyle.blue_600"
                 android:tag="1"
-                android:text="@string/main_one" />
+                android:text="@string/main_one"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_tow"
                 style="@style/button_customstyle.blue_600"
                 android:tag="2"
-                android:text="@string/main_tow" />
+                android:text="@string/main_tow"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_three"
                 style="@style/button_customstyle.blue_600"
                 android:tag="3"
-                android:text="@string/main_three" />
+                android:text="@string/main_three"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_addition"
                 style="@style/button_customstyle.orange_500"
                 android:tag="+"
-                android:text="@string/main_addition" />
+                android:text="@string/main_addition"
+                app:autoSizeTextType="uniform" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button_main_plusminussign"
                 style="@style/button_customstyle.blue_600"
-                android:text="@string/main_plusminussign" />
+                android:text="@string/main_plusminussign"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_zero"
                 style="@style/button_customstyle.blue_600"
                 android:tag="0"
-                android:text="@string/main_zero" />
+                android:text="@string/main_zero"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_dot"
                 style="@style/button_customstyle.blue_600"
                 android:tag="."
-                android:text="@string/main_dot" />
+                android:text="@string/main_dot"
+                app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_equal"
                 style="@style/button_customstyle.orange_500"
                 android:tag="="
-                android:text="@string/main_equal" />
+                android:text="@string/main_equal"
+                app:autoSizeTextType="uniform" />
         </TableRow>
     </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
