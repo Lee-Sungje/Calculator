@@ -17,11 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_margin="8dp"
-            android:background="@drawable/all_textview"
-            android:backgroundTint="@color/blue_800"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="bottom|end"
             android:text="@string/main_zero"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorSecondary"
             android:padding="16dp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,6 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,26 +48,26 @@
 
             <Button
                 android:id="@+id/button_main_allclear"
-                style="@style/button_customstyle.blue_700"
+                style="@style/button_customstyle.secondaryColor"
                 android:text="@string/main_allclear"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_clear"
-                style="@style/button_customstyle.blue_700"
+                style="@style/button_customstyle.secondaryColor"
                 android:text="@string/main_clear"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_modular"
-                style="@style/button_customstyle.blue_700"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="%"
                 android:text="@string/main_modular"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_division"
-                style="@style/button_customstyle.orange_500"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="/"
                 android:text="@string/main_division"
                 app:autoSizeTextType="uniform" />
@@ -79,28 +80,28 @@
 
             <Button
                 android:id="@+id/button_main_seven"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="7"
                 android:text="@string/main_seven"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_eight"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="8"
                 android:text="@string/main_eight"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_nine"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="9"
                 android:text="@string/main_nine"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_multiplication"
-                style="@style/button_customstyle.orange_500"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="*"
                 android:text="@string/main_multiplication"
                 app:autoSizeTextType="uniform" />
@@ -113,28 +114,28 @@
 
             <Button
                 android:id="@+id/button_main_four"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="4"
                 android:text="@string/main_four"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_five"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="5"
                 android:text="@string/main_five"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_six"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="6"
                 android:text="@string/main_six"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_subtraction"
-                style="@style/button_customstyle.orange_500"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="-"
                 android:text="@string/main_subtraction"
                 app:autoSizeTextType="uniform" />
@@ -147,28 +148,28 @@
 
             <Button
                 android:id="@+id/button_main_one"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="1"
                 android:text="@string/main_one"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_tow"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="2"
                 android:text="@string/main_tow"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_three"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="3"
                 android:text="@string/main_three"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_addition"
-                style="@style/button_customstyle.orange_500"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="+"
                 android:text="@string/main_addition"
                 app:autoSizeTextType="uniform" />
@@ -181,27 +182,27 @@
 
             <Button
                 android:id="@+id/button_main_plusminussign"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:text="@string/main_plusminussign"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_zero"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="0"
                 android:text="@string/main_zero"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_dot"
-                style="@style/button_customstyle.blue_600"
+                style="@style/button_customstyle.primaryColor"
                 android:tag="."
                 android:text="@string/main_dot"
                 app:autoSizeTextType="uniform" />
 
             <Button
                 android:id="@+id/button_main_equal"
-                style="@style/button_customstyle.orange_500"
+                style="@style/button_customstyle.secondaryColor"
                 android:tag="="
                 android:text="@string/main_equal"
                 app:autoSizeTextType="uniform" />
