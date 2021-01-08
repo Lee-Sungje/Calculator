@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Calculator</string>
 
-    <string name="main_plusminussign">+/-</string>
+    <string name="main_plusminussign">+/−</string>
     <string name="main_allclear">AC</string>
     <string name="main_clear">C</string>
     <string name="main_modular">mod</string>
     <string name="main_division">÷</string>
     <string name="main_multiplication">×</string>
-    <string name="main_subtraction">-</string>
+    <string name="main_subtraction">−</string>
     <string name="main_addition">+</string>
     <string name="main_equal">=</string>
     <string name="main_dot">.</string>

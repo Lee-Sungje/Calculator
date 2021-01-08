@@ -1,5 +1,7 @@
 package com.example.calculator
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
+        activityMainBinding.textviewMainDisplay.setOnLongClickListener(displayOnLongClickListener)
         activityMainBinding.buttonMainZero.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainOne.setOnClickListener(numberOnClickListener)
         activityMainBinding.buttonMainTow.setOnClickListener(numberOnClickListener)
@@ -43,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.buttonMainDivision.setOnClickListener(operatorOnClickListener)
         activityMainBinding.buttonMainModular.setOnClickListener(operatorOnClickListener)
         activityMainBinding.buttonMainEqual.setOnClickListener(equalOnClickListener)
+    }
+
+    private val displayOnLongClickListener = View.OnLongClickListener {
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("displayValue", activityMainBinding.textviewMainDisplay.text)
+        clipboardManager.setPrimaryClip(clipData)
+        makeToast("클립보드로 복사했습니다.")
+        true
     }
 
     private val numberOnClickListener = View.OnClickListener {
@@ -98,10 +109,10 @@ class MainActivity : AppCompatActivity() {
             calculator.operand = parse(activityMainBinding.textviewMainDisplay.text.toString())
         } catch (e: NumberFormatException) {
             calculator.allClear()
-            makeToast("오버플로우")
+            makeToast("오버플로우가 발생했습니다.")
         } catch (e: Exception) {
             calculator.allClear()
-            makeToast("오류")
+            makeToast("오류가 발생했습니다.")
         }
 
         if (!calculator.isFirstInput) calculate(calculator.operator)
@@ -131,11 +142,11 @@ class MainActivity : AppCompatActivity() {
         } catch (e: NumberFormatException) {
             calculator.allClear()
             activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
-            makeToast("오버플로우")
+            makeToast("오버플로우가 발생했습니다.")
         } catch (e: Exception) {
             calculator.allClear()
             activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
-            makeToast("오류")
+            makeToast("오류가 발생했습니다.")
         }
 
         calculator.operator = it.tag.toString()
@@ -150,10 +161,10 @@ class MainActivity : AppCompatActivity() {
             makeToast("0으로 나눌 수 없습니다.")
         } catch (e: NumberFormatException) {
             calculator.allClear()
-            makeToast("오버플로우")
+            makeToast("오버플로우가 발생했습니다.")
         } catch (e: Exception) {
             calculator.allClear()
-            makeToast("오류")
+            makeToast("오류가 발생했습니다.")
         } finally {
             activityMainBinding.textviewMainDisplay.text = if (isInRange(calculator.result) || isZero(calculator.result)) {
                 format(calculator.result, decimalFormat)
