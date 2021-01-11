@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("displayValue", activityMainBinding.textviewMainDisplay.text)
         clipboardManager.setPrimaryClip(clipData)
-        makeToast("클립보드로 복사했습니다.")
+        makeToast(getString(R.string.message_clipboard))
         true
     }
 
@@ -109,10 +109,10 @@ class MainActivity : AppCompatActivity() {
             calculator.operand = parse(activityMainBinding.textviewMainDisplay.text.toString())
         } catch (e: NumberFormatException) {
             calculator.allClear()
-            makeToast("오버플로우가 발생했습니다.")
+            makeToast(getString(R.string.message_overflow))
         } catch (e: Exception) {
             calculator.allClear()
-            makeToast("오류가 발생했습니다.")
+            makeToast(getString(R.string.message_error))
         }
 
         if (!calculator.isFirstInput) calculate(calculator.operator)
@@ -142,11 +142,11 @@ class MainActivity : AppCompatActivity() {
         } catch (e: NumberFormatException) {
             calculator.allClear()
             activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
-            makeToast("오버플로우가 발생했습니다.")
+            makeToast(getString(R.string.message_overflow))
         } catch (e: Exception) {
             calculator.allClear()
             activityMainBinding.textviewMainDisplay.text = format(calculator.result, decimalFormat)
-            makeToast("오류가 발생했습니다.")
+            makeToast(getString(R.string.message_error))
         }
 
         calculator.operator = it.tag.toString()
@@ -158,13 +158,13 @@ class MainActivity : AppCompatActivity() {
             calculator.calculate(operator)
         } catch (e: ArithmeticException) {
             calculator.allClear()
-            makeToast("0으로 나눌 수 없습니다.")
+            makeToast(getString(R.string.message_divide_by_zero))
         } catch (e: NumberFormatException) {
             calculator.allClear()
-            makeToast("오버플로우가 발생했습니다.")
+            makeToast(getString(R.string.message_overflow))
         } catch (e: Exception) {
             calculator.allClear()
-            makeToast("오류가 발생했습니다.")
+            makeToast(getString(R.string.message_error))
         } finally {
             activityMainBinding.textviewMainDisplay.text = if (isInRange(calculator.result) || isZero(calculator.result)) {
                 format(calculator.result, decimalFormat)
