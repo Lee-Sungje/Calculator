@@ -1,4 +1,4 @@
-package com.example.calculator
+package com.sungje.calculator
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.calculator.databinding.ActivityMainBinding
+import com.sungje.calculator.databinding.ActivityMainBinding
 import java.math.BigDecimal
 import java.math.MathContext
 import java.text.DecimalFormat
