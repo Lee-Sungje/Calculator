@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">심플 계산기</string>
+    <string name="app_name">Simple Calculator</string>
 
     <string name="main_plusminussign">+/−</string>
     <string name="main_allclear">AC</string>
@@ -23,8 +23,8 @@
     <string name="main_eight">8</string>
     <string name="main_nine">9</string>
 
-    <string name="message_clipboard">클립보드로 복사했습니다.</string>
-    <string name="message_divide_by_zero">0으로 나눌 수 없습니다.</string>
-    <string name="message_error">오류가 발생했습니다.</string>
-    <string name="message_overflow">오버플로우가 발생했습니다.</string>
+    <string name="message_clipboard">Successfully copied to clipboard.</string>
+    <string name="message_divide_by_zero">Cannot be divided into zeroes.</string>
+    <string name="message_error">An error has occurred.</string>
+    <string name="message_overflow">An overflow has occurred.</string>
 </resources>
