@@ -1,4 +1,4 @@
-package com.example.calculator
+package com.sungje.calculator
 
 import java.math.BigDecimal
 import java.math.MathContext
